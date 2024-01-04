@@ -5,10 +5,16 @@ import injectedStyle from './injected.css?inline';
 
 refreshOnUpdate('pages/content');
 
+const chatHistoryNav = document.querySelector('[aria-label="Chat history"]');
+
 const root = document.createElement('div');
 root.id = 'chrome-extension-boilerplate-react-vite-content-view-root';
 
-document.body.append(root);
+// 获取 chatHistoryNav 的第一个子元素
+const firstChild = chatHistoryNav.firstChild;
+
+// 将 root 插入到第一个子元素之前
+firstChild.parentNode.insertBefore(root, firstChild);
 
 const rootIntoShadow = document.createElement('div');
 rootIntoShadow.id = 'shadow-root';
